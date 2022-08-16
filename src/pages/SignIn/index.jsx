@@ -20,7 +20,7 @@ const SignIn = () => {
   });
   const [isLoading, setIsLoading] = useState({ placeholder: "LOGIN", disabled: false });
   const [transformInputEmail, setTransformInputEmail] = useState({disabled: false});
-  const [transformInputPasswod, setTransformInputPassword] = useState({disabled: false});
+  const [transformInputPassword, setTransformInputPassword] = useState({disabled: false});
   const { login } = useContext(AuthContext);
 
   const handleParentClick = event => {
@@ -28,9 +28,9 @@ const SignIn = () => {
 
     if (event.target === event.currentTarget) {
       transformInputEmail.disabled = false; 
-      transformInputPasswod.disabled = false;
+      transformInputPassword.disabled = false;
       setTransformInputEmail({...transformInputEmail}); 
-      setTransformInputPassword({...transformInputPasswod}); 
+      setTransformInputPassword({...transformInputPassword}); 
     }
   };
 
@@ -40,8 +40,8 @@ const SignIn = () => {
   };
 
   const handleChildClickPassword = event => {
-    transformInputPasswod.disabled = true; 
-    setTransformInputPassword({...transformInputPasswod}); 
+    transformInputPassword.disabled = true; 
+    setTransformInputPassword({...transformInputPassword}); 
   };
 
   const handleLogin = async (e) => {
@@ -63,7 +63,7 @@ const SignIn = () => {
         <img src={Logo} alt="FanAnimeListLogo" onClick={() => navigate("/")} />
       </Header>
       <Title>Login</Title>
-      <ContainerInput onSubmit={handleLogin}  disableButton={isLoading.disabled}>
+      <ContainerInput onSubmit={handleLogin}  disableButton={isLoading.disabled} onClick={handleParentClick}>
         <Field transformLabel={transformInputEmail.disabled}>
           <label>E-mail</label>
           <input onClick={handleChildClickEmail}
@@ -75,7 +75,7 @@ const SignIn = () => {
             required
           />
         </Field>
-        <Field transformLabel={transformInputPasswod.disabled}>
+        <Field transformLabel={transformInputPassword.disabled}>
           <label>Password</label>
           <input onClick={handleChildClickPassword}
             type="password"
@@ -86,9 +86,9 @@ const SignIn = () => {
             required
           />
         </Field>
-      <button type="submit">
-          {isLoading.placeholder}
-      </button>
+        <button type="submit">
+            {isLoading.placeholder}
+        </button>
       </ContainerInput>
       <StyledContainer>
         <p>First time? </p>

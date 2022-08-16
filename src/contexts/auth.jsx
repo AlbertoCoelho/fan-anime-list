@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
       navigate("/home");
     } catch {
       alert("User not registered, make your registration!");
-      isLoading.placeholder = "Entrar";
+      isLoading.placeholder = "LOGIN";
       isLoading.disabled = false;
       setIsLoading({ ...isLoading });
     }
